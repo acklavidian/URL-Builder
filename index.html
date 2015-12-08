@@ -1,4 +1,4 @@
-<html>
+<html id="main_html">
 <head>
 
     <link rel="stylesheet" type="test/css" href="normalize.css">
@@ -8,6 +8,7 @@
 </head>
 
 <body>
+  <input type="button" id="activate_url_builder_button" onclick="showBuilder()" value="URL Builder">
     <div id="url_wiz_div" onkeyup="updateURL()" onclick="updateURL()">
         <h1 style="margin-left:3%">URL Builder</h1><hr>
         <table cellpadding="10" id="url_wiz_table">
@@ -21,7 +22,7 @@
                     <label for="base_url_input">Base URL:</label>
                 </td>
                 <td colspan="2">
-                    <input  type="text" id="base_url_input" >
+                    <input  type="text" id="base_url_input" placeholder="www.example.com">
                 </td>
             </tr>
             <tr>
@@ -35,18 +36,9 @@
                 </td>
                 <td>
                 </td>
-                <td class="warn-cell"  align="right"  rowspan="2">
-                    <span id="warn_icon" class="ion-alert"></span>
-                </td>
-                <td class="warn-cell" rowspan="2">
-                    <p>Disable the survey number only if you can't populate
-                                    this field dynamically. This field effects the 
-                                    "Detalis>Validation>Verify Callback" attribute of the
-                                    survey details.</p>
-                </td>
             </tr>
-            <tr>
-                <td>
+            <tr id="survey_num_row">
+                <td style="width: 100px">
                     <label for="survey_num_alias_input">Survey Number:</label>
                 </td>
                 <td>
@@ -56,8 +48,13 @@
                     <input type="checkbox" onclick="disableSurveyNumCheckbox()" id="survey_num_checkbox_input">
                 </td>
                 <td>
-                    <label for="survey_num_checkbox_input">Disable</label>
-                </td> 
+                    
+                </td>
+            </tr>
+            <tr id="warn_row">
+                <td class="warn-cell"  align="left"  colspan="3">
+                    <span id="warn_icon" class="ion-alert"></span> Disable the survey number only if you can't populate this field dynamically. This field effects the "Detalis>Validation>Verify Callback" attribute of the survey details.
+                </td>
             </tr>
             <tr>
                 <td>
@@ -72,7 +69,15 @@
                     <h2>Step 2 - Optional Parameters:</h2>
                     <p>Check the box to add a parameter to the survey URL. The label can be edited to correspond with the requirements of your survey platform.</p>
                 </td>
-               
+
+            </tr>
+            <tr>
+                <td>
+                    <b>Title:</b>
+                </td>
+                <td>
+                    <b>Key:</b>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -135,27 +140,28 @@
                 </td>
             </tr>
             <tr id="add_button_row">
-                <td class="add_param_button"> 
+                <td class="add_param_button">
                     <span id="add-icon" class="ion-plus-circled" onclick="addParam(this)"></span>
                 </td>
-            
+
             </tr>
-            
+
         </table>
         <table class="result_area">
-            
+
             <tr>
-                <td id="gen_url_cell" class="result_element"colspan="3">
+                <td id="gen_url_cell" class="result_element" colspan="3">
                     <textarea id="gen_url_output" rows='8' disabled></textarea>
                 </td>
                 <td align="center" valign="top" class="result_element">
-                    <input type="button" id="insertURLButton" value="Insert URL">
-                    <input type="button" id="cancelButton"  value="Cancel">
-                    <input type="button" id="resetButton" value="Reset">
+                    <input type="button" id="insertURLButton" onclick="demoComplete()" value="Insert URL">
+                    <input type="button" id="cancelButton" onclick="notAvailable()" value="Cancel">
+                    <input type="button" id="resetButton" onclick="notAvailable()" value="Reset">
                 </td>
             </tr>
         </table>
     </div>
+    
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
     <script type="text/javascript" src="script.js"></script>

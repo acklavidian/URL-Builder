@@ -1,33 +1,36 @@
 html{
     font-family: 'Roboto', sans-serif;
     background-color: rgb(229,229,229);
+    background-image: url("Field Manager _ Fulcrum.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    height:1906px;
 }
 
 #url_wiz_div{
-    width:761px;
+    display: none;
+    width: 640px;
     border-width: 1px;
     border-color: #b5b5b5;
     border-style: solid;
-    position: absolute;
-     position: absolute;
-    top:10%;
+    position: fixed;
     left: 0;
     right: 0;
     margin: auto;
     background-color: white;
     box-shadow: 0px 0px 20px #888888;
-    
+    top:20%;
 }
 
 #url_wiz_div td{
     padding: 1;
     word-wrap: break-word;
-    font-size: 12;    
+    font-size: 12;
     
 }
 
 #url_wiz_table{
-    width:auto;
+    width: 100%;
     table-layout: fixed;
     margin-left: 3%;
 }
@@ -36,8 +39,9 @@ html{
 }
 
 #warn_icon {
-    font-size:32px;
-    margin-right:30px;
+    font-size:12px;
+    margin-right:10px;
+    margin-left:10px;
 }
 
 #survey_num_warn_row {
@@ -57,7 +61,6 @@ h2{
 
 .warn-cell {
     background:#ffbebe;
-    visibility: hidden;
 }
 
 #gen_url_output {
@@ -102,10 +105,21 @@ td.result_element {
 
 input[type=text] {
     padding: 4px;
-    -webkit-appearance: none; 
-    -moz-appearance: none; 
+    -webkit-appearance: none;
+    -moz-appearance: none;
     border: 2px solid #eee; /* Here */
 }
 input[type="text"]:disabled {
     background: #dddddd;
+}
+#warn_row{
+    display: none;
+}
+#activate_url_builder_button{
+    position: absolute;
+    top: 1325px;
+    left: 333px;
+    height: 20px;
+    font-size: 12px;
+    
 }
