@@ -4,18 +4,18 @@ urlParams = Array.prototype.slice.call(urlParams);
 //Function for the disabling of Survey Number
 function disableSurveyNumCheckbox() {
     var checkBox = document.getElementById("survey_num_checkbox_input"),
+        //VV REMOVE?
         warnBox = document.getElementsByClassName("warn-cell"),
         warnRow = document.getElementById("warn_row");
-        aliasInput = document.getElementById("survey_num_alias_input");
+    aliasInput = document.getElementById("survey_num_alias_input");
     if (checkBox.checked) {
         warnRow.style.display = "table-row";
         aliasInput.disabled = true;
     } else {
-        warnRow.style.display= "none";
+        warnRow.style.display = "none";
         aliasInput.disabled = false;
     }
 }
-
 
 
 
@@ -31,7 +31,6 @@ function activateParameter(textboxName) {
 
 
 
-
 //Update Generated URL
 function updateURL() {
 
@@ -39,31 +38,32 @@ function updateURL() {
         baseUrl = document.getElementById("base_url_input"),
         urlVals = [],
         keys = ["RID", "RISN", "SUPPLIER_ID", "AGE",
-                "GENDER", "PID", "ZIP", "MS_is_mobile",
-                "MS_is_tablet"],
+            "GENDER", "PID", "ZIP", "MS_is_mobile",
+            "MS_is_tablet"
+        ],
         customParam = document.getElementsByName("custom_param_row"),
         aliasInput = "",
         searchInput = "";
-        customParam = Array.prototype.slice.call(customParam);
-    urlParams.forEach(function (element, index, array) {
+    customParam = Array.prototype.slice.call(customParam);
+    urlParams.forEach(function(element, index, array) {
         if (!element.disabled) {
             urlVals.push(element.value + "=" + "[%" + keys[index] + "%]&");
         }
     });
-    customParam.forEach(function (element, index, array){
+    customParam.forEach(function(element, index, array) {
         aliasInput = element.querySelectorAll('[name=aliasInput]')[0];
         searchInput = element.querySelectorAll('[name=searchInput]')[0];
-        if (searchInput.value !== "" && aliasInput.value !== "" ){
+        if (searchInput.value !== "" && aliasInput.value !== "") {
             urlVals.push(aliasInput.value + "=" + "[%" + searchInput.value + "%]&");
         }
 
-        if(searchInput.value === ""){
+        if (searchInput.value === "") {
             searchInput.style.borderColor = "#ffbebe";
         } else {
             searchInput.style.borderColor = "#EEEEEE";
 
         }
-        if(aliasInput.value === ""){
+        if (aliasInput.value === "") {
             aliasInput.style.borderColor = "#ffbebe";
         } else {
             aliasInput.style.borderColor = "#EEEEEE";
@@ -74,7 +74,6 @@ function updateURL() {
     }
 
 }
-
 
 
 
@@ -89,21 +88,21 @@ function addParam() {
         paramDeleteCell = document.createElement("td"),
         paramDeleteButton = document.createElement("span");
 
-    paramRow.setAttribute("name","custom_param_row");
+    paramRow.setAttribute("name", "custom_param_row");
     paramRow.style.verticalAlign = "center";
     paramSearchCell.setAttribute("name", "searchCell");
-    paramAliasCell.setAttribute("name","aliasCell");
+    paramAliasCell.setAttribute("name", "aliasCell");
     paramSearchInput.type = "text";
-    paramSearchInput.setAttribute("name","searchInput");
+    paramSearchInput.setAttribute("name", "searchInput");
     paramSearchInput.placeholder = "Search For Parameters";
 
 
     paramAliasInput.type = "text";
-    paramAliasInput.setAttribute("name","aliasInput");
-    paramAliasInput.placeholder="Enter Key";
+    paramAliasInput.setAttribute("name", "aliasInput");
+    paramAliasInput.placeholder = "Enter Key";
     paramDeleteButton.className = "ion-close";
     paramDeleteButton.style.fontSize = "25px";
-    paramDeleteButton.onclick = function () {
+    paramDeleteButton.onclick = function() {
         paramRow.parentElement.removeChild(paramRow);
     };
 
@@ -117,119 +116,130 @@ function addParam() {
     addButtonRow.parentElement.insertBefore(paramRow, addButtonRow);
     paramAliasCell.style.width = "10px";
     $(paramSearchInput).typeahead({
-                                        hint: true,
-                                        highlight: true,
-                                        minLength: 1,
-                                        maxLength: 5,
-                                    },
-                                    {
-                                        name: 'states',
-                                        source: substringMatcher(states)
-                                    });
+        hint: true,
+        highlight: true,
+        minLength: 1,
+        maxLength: 5,
+    }, {
+        name: 'states',
+        source: substringMatcher(states)
+    });
 }
-
 
 
 
 var substringMatcher = function(strs) {
-  return function findMatches(q, cb) {
-    var matches, substringRegex;
+    return function findMatches(q, cb) {
+        var matches, substringRegex;
 
-    // an array that will be populated with substring matches
-    matches = [];
+        // an array that will be populated with substring matches
+        matches = [];
 
-    // regex used to determine if a string contains the substring `q`
-    substrRegex = new RegExp(q, 'i');
+        // regex used to determine if a string contains the substring `q`
+        substrRegex = new RegExp(q, 'i');
 
-    // iterate through the pool of strings and for any string that
-    // contains the substring `q`, add it to the `matches` array
-    $.each(strs, function(i, str) {
-      if (substrRegex.test(str)) {
-        matches.push(str);
-      }
-    });
+        // iterate through the pool of strings and for any string that
+        // contains the substring `q`, add it to the `matches` array
+        $.each(strs, function(i, str) {
+            if (substrRegex.test(str)) {
+                matches.push(str);
+            }
+        });
 
-    cb(matches);
-  };
+        cb(matches);
+    };
 };
 
 var states = ["AGE",
-"GENDER",
-"ZIP",
-"HISPANIC",
-"STATE",
-"DMA",
-"COUNTY",
-"DIVISION",
-"ETHNICITY",
-"MSA",
-"REGION",
-"STANDARD_RELATIONSHIP",
-"STANDARD_EDUCATION",
-"STANDARD_VOTE",
-"STANDARD_PRIMARY_DECISION_MAKER",
-"STANDARD_PETS",
-"STANDARD_SEXUAL_ORIENTATION",
-"STANDARD_TOTAL_HOUSEHOLD",
-"STANDARD_HOUSEHOLD_TYPE",
-"STANDARD_INDUSTRY",
-"STANDARD_COMPANY_REVENUE",
-"STANDARD_COMPANY_DEPARTMENT",
-"STANDARD_CAR_USE",
-"STANDARD_AUTO_DECISION_MAKER",
-"STANDARD_AUTO_BRANDS",
-"STANDARD_AUTO_TYPE",
-"STANDARD_AUTO_MANUFACTURE_DATE",
-"STANDARD_AUTO_PURCHASE_DATE",
-"STANDARD_AUTO_PURCHASE_TYPE",
-"STANDARD_AUTO_MOTORCYCLE",
-"STANDARD_FAST_FOOD_FREQUENCY",
-"STANDARD_FAST_FOOD_VISIT",
-"STANDARD_BEVERAGE_P4W",
-"STANDARD_BEVERAGE_REGULARLY",
-"STANDARD_ALCOHOL_FREQUENCY",
-"STANDARD_HOBBIES",
-"STANDARD_MOVIE_FREQUENCY",
-"STANDARD_MOVIE_GENRE",
-"STANDARD_MOVIE_HOME_WATCHING",
-"STANDARD_DVD_PURCHASE",
-"STANDARD_EXERCISE_HOURS",
-"STANDARD_SPORTS",
-"STANDARD_GAMBLING",
-"STANDARD_ELECTRONICS",
-"STANDARD_EARLY_ADOPTER",
-"STANDARD_CELL_CARRIER",
-"STANDARD_CELL_PLAN",
-"STANDARD_SMART_PHONE",
-"STANDARD_INTERNET_TYPE",
-"STANDARD_MOVIE_DOWNLOAD"
+    "GENDER",
+    "ZIP",
+    "HISPANIC",
+    "STATE",
+    "DMA",
+    "COUNTY",
+    "DIVISION",
+    "ETHNICITY",
+    "MSA",
+    "REGION",
+    "STANDARD_RELATIONSHIP",
+    "STANDARD_EDUCATION",
+    "STANDARD_VOTE",
+    "STANDARD_PRIMARY_DECISION_MAKER",
+    "STANDARD_PETS",
+    "STANDARD_SEXUAL_ORIENTATION",
+    "STANDARD_TOTAL_HOUSEHOLD",
+    "STANDARD_HOUSEHOLD_TYPE",
+    "STANDARD_INDUSTRY",
+    "STANDARD_COMPANY_REVENUE",
+    "STANDARD_COMPANY_DEPARTMENT",
+    "STANDARD_CAR_USE",
+    "STANDARD_AUTO_DECISION_MAKER",
+    "STANDARD_AUTO_BRANDS",
+    "STANDARD_AUTO_TYPE",
+    "STANDARD_AUTO_MANUFACTURE_DATE",
+    "STANDARD_AUTO_PURCHASE_DATE",
+    "STANDARD_AUTO_PURCHASE_TYPE",
+    "STANDARD_AUTO_MOTORCYCLE",
+    "STANDARD_FAST_FOOD_FREQUENCY",
+    "STANDARD_FAST_FOOD_VISIT",
+    "STANDARD_BEVERAGE_P4W",
+    "STANDARD_BEVERAGE_REGULARLY",
+    "STANDARD_ALCOHOL_FREQUENCY",
+    "STANDARD_HOBBIES",
+    "STANDARD_MOVIE_FREQUENCY",
+    "STANDARD_MOVIE_GENRE",
+    "STANDARD_MOVIE_HOME_WATCHING",
+    "STANDARD_DVD_PURCHASE",
+    "STANDARD_EXERCISE_HOURS",
+    "STANDARD_SPORTS",
+    "STANDARD_GAMBLING",
+    "STANDARD_ELECTRONICS",
+    "STANDARD_EARLY_ADOPTER",
+    "STANDARD_CELL_CARRIER",
+    "STANDARD_CELL_PLAN",
+    "STANDARD_SMART_PHONE",
+    "STANDARD_INTERNET_TYPE",
+    "STANDARD_MOVIE_DOWNLOAD"
 ];
-
-function showBuilder(){
+//Activate window
+function showBuilder() {
     var url_wiz_div = document.getElementById("url_wiz_div");
     disableScroll();
     url_wiz_div.style.display = "block";
+    document.body.style.overflow = "hidden";
 
 }
+//Deactivate window
+function hideBuilder(){
+    var url_wiz_div = document.getElementById("url_wiz_div");
+    enableScroll();
+    url_wiz_div.style.display = "none";
+    document.body.style.overflow = "scroll";
+}
 
-function demoComplete(){
+function demoComplete() {
     alert("That concludes the demo.");
 }
 
-function notAvail(){
+function notAvail() {
     alert("Feature not availble in the demo");
 }
 
 
 // left: 37, up: 38, right: 39, down: 40,
 // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
-var keys = {37: 1, 38: 1, 39: 1, 40: 1};
+var keys = {
+    37: 1,
+    38: 1,
+    39: 1,
+    40: 1
+};
 
 function preventDefault(e) {
-  e = e || window.event;
-  if (e.preventDefault)
-      e.preventDefault();
-  e.returnValue = false;
+    e = e || window.event;
+    if (e.preventDefault)
+        e.preventDefault();
+    e.returnValue = false;
 }
 
 function preventDefaultForScrollKeys(e) {
@@ -240,12 +250,12 @@ function preventDefaultForScrollKeys(e) {
 }
 
 function disableScroll() {
-  if (window.addEventListener) // older FF
-      window.addEventListener('DOMMouseScroll', preventDefault, false);
-  window.onwheel = preventDefault; // modern standard
-  window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
-  window.ontouchmove  = preventDefault; // mobile
-  document.onkeydown  = preventDefaultForScrollKeys;
+    if (window.addEventListener) // older FF
+        window.addEventListener('DOMMouseScroll', preventDefault, false);
+    window.onwheel = preventDefault; // modern standard
+    window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+    window.ontouchmove = preventDefault; // mobile
+    document.onkeydown = preventDefaultForScrollKeys;
 }
 
 function enableScroll() {

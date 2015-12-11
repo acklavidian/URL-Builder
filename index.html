@@ -1,119 +1,119 @@
 <html id="main_html">
-<head>
-
-    <link rel="stylesheet" type="test/css" href="normalize.css">
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="test/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" type="test/css" href="style.css">
-</head>
-
-<body>
-  <input type="button" id="activate_url_builder_button" onclick="showBuilder()" value="URL Builder">
-    <div id="url_wiz_div" onkeyup="updateURL()" onclick="updateURL()">
-        <h1 style="margin-left:3%">URL Builder</h1><hr>
-        <table cellpadding="10" id="url_wiz_table">
-            <tr>
-                <td colspan='2'>
-                    <h2>Step 1 - Primary Parameters:</h2>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="base_url_input">Base URL:</label>
-                </td>
-                <td colspan="2">
-                    <input  type="text" id="base_url_input" placeholder="www.example.com">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="RID_input">Fulcrum ID:</label>
-                </td>
-                <td>
-                    <input class="inputFieldValue" type="text" id="RID_input" value="rid">
-                </td>
-                <td>
-                </td>
-                <td>
-                </td>
-            </tr>
-            <tr id="survey_num_row">
-                <td style="width: 100px">
-                    <label for="survey_num_alias_input">Survey Number:</label>
-                </td>
-                <td>
-                    <input class="inputFieldValue" type="text" id="survey_num_alias_input" value="RISN">
-                </td>
-                <td>
-                    <input type="checkbox" onclick="disableSurveyNumCheckbox()" id="survey_num_checkbox_input">
-                </td>
-                <td>
-                    
-                </td>
-            </tr>
-            <tr id="warn_row">
-                <td class="warn-cell"  align="left"  colspan="3">
-                    <span id="warn_icon" class="ion-alert"></span> Disable the survey number only if you can't populate this field dynamically. This field effects the "Detalis>Validation>Verify Callback" attribute of the survey details.
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="test_input">Test Parameter:</label>
-                </td>
-                <td>
-                    <input type="text" id="test_input" value="test=1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <h2>Step 2 - Optional Parameters:</h2>
-                    <p>Check the box to add a parameter to the survey URL. The label can be edited to correspond with the requirements of your survey platform.</p>
-                </td>
-
-            </tr>
-            <tr>
-                <td>
-                    <b>Title:</b>
-                </td>
-                <td>
-                    <b>Key:</b>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" onclick="activateParameter('supplier_id_alias_input')" id="supplier_id_checkbox">
-                    <label for="supplier_id_checkbox">Supplier ID:</label>
-                </td>
-                <td>
-                    <input class="inputFieldValue" type="text" id="supplier_id_alias_input" value="SID" disabled>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" id="age_checkbox" onclick="activateParameter('age_alias_input')">
-                    <label for="age_checkbox">Age:</label>
-                </td>
-                <td>
-                    <input class="inputFieldValue" type="text" id="age_alias_input" value="AGE" disabled>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" id="gender_checkbox" onclick="activateParameter('gender_alias_input')">
-                    <label for="gender_checkbox">Gender:</label>
-                </td>
-                <td>
-                    <input class="inputFieldValue" type="text" id="gender_alias_input" value="GENDER" disabled>
-                </td>
-            </tr><tr>
-                <td>
-                    <input type="checkbox" id="panelist_id_checkbox" onclick="activateParameter('panelist_id_alias_input')">
-                    <label for="panelist_id_checkbox">Panelist ID:</label>
-                </td>
-                <td>
-                    <input class="inputFieldValue" type="text" id="panelist_id_alias_input" value="PID" disabled>
-                </td>
-            </tr><tr>
+    <head>
+        <title>URL builder</title>
+        <link rel="stylesheet" type="test/css" href="normalize.css">
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="test/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <link rel="stylesheet" type="test/css" href="style.css">
+    </head>
+    <body>
+        <form>
+            <input type="button" id="activate_url_builder_button" onclick="showBuilder()" value="URL Builder">
+            <div id="url_wiz_div" onkeyup="updateURL()" onclick="updateURL()">
+                <h1 style="margin-left:3%">URL Builder</h1><hr>
+                <table cellpadding="10" id="url_wiz_table">
+                    <tr>
+                        <td colspan='2'>
+                            <h2>Step 1 - Primary Parameters:</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="base_url_input">Base URL:</label>
+                        </td>
+                        <td colspan="2">
+                            <input  type="text" id="base_url_input" placeholder="www.example.com">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="RID_input">Fulcrum ID:</label>
+                        </td>
+                        <td>
+                            <input class="inputFieldValue" type="text" id="RID_input" value="rid">
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr id="survey_num_row">
+                        <td style="width: 100px">
+                            <label for="survey_num_alias_input">Survey Number:</label>
+                        </td>
+                        <td>
+                            <input class="inputFieldValue" type="text" id="survey_num_alias_input" value="RISN">
+                        </td>
+                        <td>
+                            <label for="survey_num_checkbox_input">Disable</label>
+                            <input type="checkbox" onclick="disableSurveyNumCheckbox()" id="survey_num_checkbox_input">
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr id="warn_row">
+                        <td class="warn-cell"  align="left"  colspan="3">
+                            <span id="warn_icon" class="ion-alert"></span> Disable the survey number only if you can't populate this field dynamically. This field effects the "Detalis>Validation>Verify Callback" attribute of the survey details.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="test_input">Test Parameter:</label>
+                        </td>
+                        <td>
+                            <input type="text" id="test_input" value="test=1">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <h2>Step 2 - Optional Parameters:</h2>
+                            <p>Check the box to add a parameter to the survey URL. The label can be edited to correspond with the requirements of your survey platform.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Title:</b>
+                        </td>
+                        <td>
+                            <b>Key:</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" onclick="activateParameter('supplier_id_alias_input')" id="supplier_id_checkbox">
+                            <label for="supplier_id_checkbox">Supplier ID:</label>
+                        </td>
+                        <td>
+                            <input class="inputFieldValue" type="text" id="supplier_id_alias_input" value="SID" disabled>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="age_checkbox" onclick="activateParameter('age_alias_input')">
+                            <label for="age_checkbox">Age:</label>
+                        </td>
+                        <td>
+                            <input class="inputFieldValue" type="text" id="age_alias_input" value="AGE" disabled>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="gender_checkbox" onclick="activateParameter('gender_alias_input')">
+                            <label for="gender_checkbox">Gender:</label>
+                        </td>
+                        <td>
+                            <input class="inputFieldValue" type="text" id="gender_alias_input" value="GENDER" disabled>
+                        </td>
+                    </tr><tr>
+                    <td>
+                        <input type="checkbox" id="panelist_id_checkbox" onclick="activateParameter('panelist_id_alias_input')">
+                        <label for="panelist_id_checkbox">Panelist ID:</label>
+                    </td>
+                    <td>
+                        <input class="inputFieldValue" type="text" id="panelist_id_alias_input" value="PID" disabled>
+                    </td>
+                </tr><tr>
                 <td>
                     <input type="checkbox" id="zip_checkbox" onclick="activateParameter('zip_alias_input')">
                     <label for="zip_checkbox">Zip:</label>
@@ -122,48 +122,51 @@
                     <input class="inputFieldValue" type="text" id="zip_alias_input" value="ZIP" disabled>
                 </td>
             </tr><tr>
-                <td>
-                    <input type="checkbox" id="mobile_flag_checkbox" onclick="activateParameter('mobile_flag_alias_input')">
-                    <label for="mobile_flag_checkbox">Mobile User Flag:</label>
-                </td>
-                <td>
-                    <input class="inputFieldValue" type="text" id="mobile_flag_alias_input" value="MS_is_mobile" disabled>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" id="tablet_checkbox" onclick="activateParameter('tablet_alias_input')">
-                    <label for="tablet_checkbox">Tablet User Flag:</label>
-                </td>
-                <td>
-                    <input class="inputFieldValue" type="text" id="tablet_alias_input" value="MS_is_tablet" disabled>
-                </td>
-            </tr>
-            <tr id="add_button_row">
-                <td class="add_param_button">
-                    <span id="add-icon" class="ion-plus-circled" onclick="addParam(this)"></span>
-                </td>
+            <td>
+                <input type="checkbox" id="mobile_flag_checkbox" onclick="activateParameter('mobile_flag_alias_input')">
+                <label for="mobile_flag_checkbox">Mobile User Flag:</label>
+            </td>
+            <td>
+                <input class="inputFieldValue" type="text" id="mobile_flag_alias_input" value="MS_is_mobile" disabled>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" id="tablet_checkbox" onclick="activateParameter('tablet_alias_input')">
+                <label for="tablet_checkbox">Tablet User Flag:</label>
+            </td>
+            <td>
+                <input class="inputFieldValue" type="text" id="tablet_alias_input" value="MS_is_tablet" disabled>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <h2>Step 3 - Search Parameters:</h2>
+            </td>
+        </tr>
+        <tr id="add_button_row">
+            <td class="add_param_button">
+                <span id="add-icon" class="ion-plus-circled" onclick="addParam(this)"></span>
+            </td>
+        </tr>
+    </table>
+    <table class="result_area">
+        <tr>
+            <td id="gen_url_cell" class="result_element" colspan="3">
+                <textarea id="gen_url_output" rows='8' disabled></textarea>
+            </td>
+            <td align="center" valign="top" class="result_element">
+                <input type="button" id="insertURLButton" onclick="demoComplete()" value="Insert URL">
+                <input type="button" id="cancelButton" onclick="hideBuilder()" value="Cancel">
+                <input type="button" id="resetButton" onclick="notAvailable()" value="Reset">
+            </td>
+        </tr>
+    </table>
+</div>
 
-            </tr>
-
-        </table>
-        <table class="result_area">
-
-            <tr>
-                <td id="gen_url_cell" class="result_element" colspan="3">
-                    <textarea id="gen_url_output" rows='8' disabled></textarea>
-                </td>
-                <td align="center" valign="top" class="result_element">
-                    <input type="button" id="insertURLButton" onclick="demoComplete()" value="Insert URL">
-                    <input type="button" id="cancelButton" onclick="notAvailable()" value="Cancel">
-                    <input type="button" id="resetButton" onclick="notAvailable()" value="Reset">
-                </td>
-            </tr>
-        </table>
-    </div>
-    
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
-    <script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</form>
 </body>
 </html>
